@@ -25,7 +25,8 @@ Each member consists of:
 <br />
 
 ### 2.2 Add a New Fan Page
-Creates a new fan page and edds it to the database.  
+Creates a new fan page and edds it to the database.
+a fan page represents a business or a shared interest.   
 
 Each fan page consists of:
 * `name` - a unique name of the fan page
@@ -34,7 +35,7 @@ Each fan page consists of:
 <br />   
 
 ### 2.3 Add a Status to a Member / Fan Page
-bla bla bla.    
+bla bla bla.  
 <br />
 
 ### 2.4 Show All Statuses of a Member / Fan Page
