@@ -11,7 +11,7 @@ Member::Member(const string& _name, const Date& _dateOfBirth) : FanPage(_name), 
 
 	fpArray.reserve(DB_INIT_SIZE);
 	feedArray.reserve(FEED_SIZE);
-	username_of_status.reserve(FEED_SIZE);
+	usernameOfStatus.reserve(FEED_SIZE);
     memberArray.reserve(DB_INIT_SIZE);
     statusArray.reserve(DB_INIT_SIZE);
 
@@ -28,8 +28,8 @@ Member& Member::operator=(const Member& other)
         fpArray.push_back(curr);
     for (const auto& curr : other.feedArray)
         feedArray.push_back(curr);
-    for (const auto& curr : other.username_of_status)
-        username_of_status.push_back(curr);
+    for (const auto& curr : other.usernameOfStatus)
+        usernameOfStatus.push_back(curr);
     return *this;
 }
 
@@ -51,10 +51,10 @@ Member& Member::operator=(Member&& other) noexcept
             feedArray.push_back(other.feedArray.at(i));
             other.feedArray.at(i) = nullptr;
         }
-        for(int i = 0; i < other.username_of_status.size(); i++)
+        for(int i = 0; i < other.usernameOfStatus.size(); i++)
         {
-            username_of_status.push_back(other.username_of_status.at(i));
-            other.username_of_status.at(i) = nullptr;
+            usernameOfStatus.push_back(other.usernameOfStatus.at(i));
+            other.usernameOfStatus.at(i) = nullptr;
         }
     }
     return *this;
@@ -130,11 +130,11 @@ void Member::removeMember(Member* member)
 */
 void Member::removeFriendFromFeed(const string& _name)
 {
-	for (int i = 0; i < username_of_status.size(); i++)
+	for (int i = 0; i < usernameOfStatus.size(); i++)
 	{
-		if (username_of_status.at(i) == _name)
+		if (usernameOfStatus.at(i) == _name)
 		{
-			username_of_status.erase(username_of_status.begin() + i);
+			usernameOfStatus.erase(usernameOfStatus.begin() + i);
 			feedArray.erase(feedArray.begin() + i);
 			i--;
 		}
@@ -189,25 +189,25 @@ void Member::addToFeed(Status* stat, string& username)
 		if (!isEmpty && size < FEED_SIZE)
 		{
 			currFriend->feedArray.push_back(currFriend->feedArray[size - 1]);
-			currFriend->username_of_status.push_back(currFriend->username_of_status[size - 1]);
+			currFriend->usernameOfStatus.push_back(currFriend->usernameOfStatus[size - 1]);
 		}
 
 		for (int i = size - 1; i > 0; i--)
 		{
 			currFriend->feedArray[i] = currFriend->feedArray[i - 1];
-			currFriend->username_of_status[i] = currFriend->username_of_status[i - 1];
+			currFriend->usernameOfStatus[i] = currFriend->usernameOfStatus[i - 1];
 		}
 
         stat->addRefCounter();
 		if (isEmpty)
 		{
 			currFriend->feedArray.push_back(stat);
-			currFriend->username_of_status.push_back(username);
+			currFriend->usernameOfStatus.push_back(username);
 		}
 		else
 		{
 			currFriend->feedArray[0] = stat;
-			currFriend->username_of_status[0] = username;
+			currFriend->usernameOfStatus[0] = username;
 		}
 	}
 }
@@ -220,7 +220,7 @@ void Member::printFeed() const
 	cout << name << "'s Feed:" << endl;
 	for (int i = 0; i < (int) feedArray.size(); i++)
 	{
-		cout << i+1 << " - By " << username_of_status.at(i) << " " << flush;
+		cout << i+1 << " - By " << usernameOfStatus.at(i) << " " << flush;
 		feedArray.at(i)->printStatus();
 	}
 }
