@@ -4,7 +4,9 @@ a Social-Media-Platform made in C++ language.
 ## 1. About
 SMP app allows users to socialize and comunicate with their friends.   
 Each user is defined by a unique name, and his date of birth.   
-The user will be promped with a menu of options, and will choose the desired option to use by entering its option number.   
+The user will be promped with a menu of options, and will choose the desired option to use by entering its option number. 
+   
+The database of `users` / `fan pages` will be read from a database file each time the app will run. All of the changes will be saved into this file after the exit option is chosen.   
 <br />
 
 ## 2. User Options
@@ -15,7 +17,6 @@ bla bla bla.
 ### 2.2 Add a Fan Page
 bla bla bla.  
 <br />   
-<br />
 
 ### 2.3 Add a Status to a User / Fan Page
 bla bla bla.    
@@ -54,5 +55,4 @@ bla bla bla.
 <br />  
 
 ### 2.12 Finish and Quit
-bla bla bla.  
-<br />  
+This option will close the menu and save all the `users` / `fan pages` added and all of the changes made since starting the app into a database file.   
