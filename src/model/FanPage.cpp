@@ -1,4 +1,4 @@
-#include "Member.h"
+#include "src/model/Member.h"
 #include "FanPage.h"
 
 /*

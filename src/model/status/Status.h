@@ -1,13 +1,13 @@
 #ifndef SMP_STATUS_H
 #define SMP_STATUS_H
-#include "Includes.h"
+#include "src/Includes.h"
 
 class Status {
 protected:
 	string content;
 	string timeOfUpload;
 
-    int* ref_counter;
+    int* ref_counter = nullptr;
 
 public:
 	explicit Status(const string& c);

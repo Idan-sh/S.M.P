@@ -1,8 +1,8 @@
 #ifndef SMP_FAN_PAGE_H
 #define SMP_FAN_PAGE_H
 
-#include "Includes.h"
-#include "Status.h"
+#include "src/Includes.h"
+#include "src/model/status/Status.h"
 
 class Member;
 
@@ -14,16 +14,16 @@ protected:
 	vector<Member*> memberArray;
 	vector<Status*> statusArray;
 
-    int* ref_counter;
+    int* ref_counter = nullptr;
 
 public:
     FanPage() = default;
 	explicit FanPage(const string& _name);
     ~FanPage() = default;
 
-    FanPage(const FanPage& other) { *this = other; ref_counter = other.ref_counter; ++(*ref_counter); };    // cpy c'tor
-    FanPage(FanPage&& other) noexcept { ref_counter = other.ref_counter; *this = std::move(other); };                                        // move c'tor
-    FanPage& operator=(const FanPage& other);       // cpy operator
+    FanPage(const FanPage& other) { *this = other; ref_counter = other.ref_counter; ++(*ref_counter); };    // copy c'tor
+    FanPage(FanPage&& other) noexcept { ref_counter = other.ref_counter; *this = std::move(other); };       // move c'tor
+    FanPage& operator=(const FanPage& other);       // copy operator
     FanPage& operator=(FanPage&& other) noexcept;   // move operator
 
     virtual FanPage& operator+=(Member& member);

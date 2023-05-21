@@ -21,10 +21,10 @@ public:
 	Member(const string& _name, const Date& _dateOfBirth);
     ~Member() = default;
 
-    Member(const Member& other){ *this = other; };          // cpy c'tor
-    Member(Member&& other) noexcept { *this = std::move(other); };    // move c'tor
-    Member& operator=(const Member& other);                 // cpy operator
-    Member& operator=(Member&& other) noexcept;                      // move operator
+    Member(const Member& other){ *this = other; };                  // copy c'tor
+    Member(Member&& other) noexcept { *this = std::move(other); };  // move c'tor
+    Member& operator=(const Member& other);                         // copy operator
+    Member& operator=(Member&& other) noexcept;                     // move operator
 
 	Member& operator+=(Member& other) override;
 	Member& operator+=(FanPage& fp);

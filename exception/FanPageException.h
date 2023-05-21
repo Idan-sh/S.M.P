@@ -1,6 +1,6 @@
 #ifndef SMP_FAN_PAGE_EXCEPTION_H
 #define SMP_FAN_PAGE_EXCEPTION_H
-#include "Includes.h"
+#include "src/Includes.h"
 
 enum FAN_PAGE_ERROR_CODE {FP_NOT_FOUND, FP_NAME_TAKEN};
 

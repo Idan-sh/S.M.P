@@ -840,13 +840,13 @@ void Facebook::InitDB()
     d.day = d.month = 1;
     d.year = 2000;
 
-    Status* s11 = new Status("hello im idan");
+    Status* s11 = new Status("hello im user1");
     Status* s12 = new Status("nice to meet you!");
 
-    Status* s21 = new Status("hello im lebo");
+    Status* s21 = new Status("hello im user2");
     Status* s22 = new Status("whats up?!");
 
-    Status* s31 = new Status("hello im oren");
+    Status* s31 = new Status("hello im user3");
     Status* s32 = new Status("bros yo");
 
     Status* s41 = new Status("fp1 fan page");
@@ -858,9 +858,9 @@ void Facebook::InitDB()
     Status* s61 = new Status("fp3 fan page");
     Status* s62 = new Status("blue supremacy");
 
-    members.push_back(new Member("idan", d));
-    members.push_back(new Member("lebo", d));
-    members.push_back(new Member("oren", d));
+    members.push_back(new Member("user1", d));
+    members.push_back(new Member("user2", d));
+    members.push_back(new Member("user3", d));
 
     //makes idan and lebo friends
     *members.at(0) += *members.at(1);
@@ -879,15 +879,15 @@ void Facebook::InitDB()
     //oren join fp3
     *members.at(2) += *fanPages.at(2);
 
-    //adds statuses to idan
+    //adds statuses to user1
     members.at(0)->writeStatus(s11);
     members.at(0)->writeStatus(s12);
 
-    //adds statuses to lebo
+    //adds statuses to user2
     members.at(1)->writeStatus(s21);
     members.at(1)->writeStatus(s22);
 
-    //adds statuses to oren
+    //adds statuses to user3
     members.at(2)->writeStatus(s31);
     members.at(2)->writeStatus(s32);
 

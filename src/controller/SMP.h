@@ -1,15 +1,15 @@
 #ifndef SMP_SMP_H
 #define SMP_SMP_H
 
-#include "Includes.h"
-#include "Member.h"
-#include "Status.h"
-#include "FanPage.h"
-#include "MemberException.h"
-#include "FanPageException.h"
-#include "SMPException.h"
-#include "ImageStatus.h"
-#include "VideoStatus.h"
+#include "src/Includes.h"
+#include "src/model/Member.h"
+#include "src/model/status/Status.h"
+#include "src/model/FanPage.h"
+#include "exception/MemberException.h"
+#include "exception/FanPageException.h"
+#include "exception/SMPException.h"
+#include "src/model/status/ImageStatus.h"
+#include "src/model/status/VideoStatus.h"
 
 enum token{ EMPTY, MEMBER , FAN_PAGE };
 enum menu{ NONE , NEW_MEMBER , NEW_FAN_PAGE , NEW_STATUS, PRINT_STATUSES , PRINT_FEED , NEW_FRIENDSHIP ,

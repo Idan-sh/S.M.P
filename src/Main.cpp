@@ -1,4 +1,4 @@
-#include "SMP.h"
+#include "src/controller/SMP.h"
 
 int main()
 {

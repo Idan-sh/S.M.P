@@ -1,5 +1,5 @@
 #include "Member.h"
-#include "MemberException.h"
+#include "exception/MemberException.h"
 
 /*
  * Reserve space for new fan pages, statuses and feed statuses to be added.

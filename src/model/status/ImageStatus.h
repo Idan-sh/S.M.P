@@ -2,7 +2,7 @@
 #define SMP_IMAGESTATUS_H
 
 #include "Status.h"
-#include "Includes.h"
+#include "src/Includes.h"
 
 class ImageStatus : public Status {
 
