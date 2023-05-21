@@ -9,7 +9,7 @@ class Member : public FanPage{
 	vector<FanPage*> fpArray;
 
 	vector<Status*> feedArray;
-	vector<string> usernameOfStatus;
+	vector<string> memberNamesOfStatuses;
 
 private:
 	void addToFeed(Status* stat, string& username);
