@@ -11,18 +11,26 @@ The database of `members` / `fan pages` will be read from a database file each t
 
 ## 2. Member Options
 ### 2.1 Add a New Member
-Adds a new member to the database.   
+Creates a new member and adds him to the database.   
 
 Each member consists of:
-* `name` - a unique name of the member
+* `name` - a unique name of the member, defined in the fan page class
+* `memberArray` and `statusArray` as defined in the fan page class
 * `date of birth` - a date struct containing: year (4 digits), month (1 or 2 digits), day (1 or 2 digits)
-* arrays
+* `fpArray` - array of pointers to the fan pages that the member is a fan of
+* `feedArray` - array of statuses posted in the member's feed
+* `memberNamesOfStatuses` - array of the member names for each status posted in the member's feed, with corresponding indexes between them
 
 > The member class inherits from the fan page class.
 <br />
 
-### 2.2 Add a Fan Page
-bla bla bla.  
+### 2.2 Add a New Fan Page
+Creates a new fan page and edds it to the database.  
+
+Each fan page consists of:
+* `name` - a unique name of the fan page
+* `memberArray` - an array of members that are fans of this fan page
+* `statusArray`- an array of statuses that were posted in the fan page
 <br />   
 
 ### 2.3 Add a Status to a Member / Fan Page
