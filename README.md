@@ -51,7 +51,8 @@ Each status has:
 Prints to the screen all the statuses in the `statusArray` of a member / fan page.   
 The format will be:
 ```
-   On {time of upload} {content}
+   On {time of upload}
+   {content}
    {the type of the status - Status/ImageStatus/VideoStatus}
 ```  
 <br />
@@ -60,6 +61,7 @@ For example for a `ImageStatus` uploaded by user1:
 ```
    On May 21 17:25:54 2012
    hello im user1
+   This status is in black and white.
 ```
 <br />  
  
