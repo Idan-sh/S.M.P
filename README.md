@@ -12,6 +12,7 @@ The database of `members` / `fan pages` will be read from a database file each t
 ## 2) Member Options
 ### 2.1) Add a New Member
 Creates a new member and adds him to the database.   
+Checks for validity of the date of birth.   
 
 Each member consists of:
 * `name` - a unique name of the member, defined in the fan page class
@@ -21,7 +22,7 @@ Each member consists of:
 * `feedArray` - array of statuses posted in the member's feed
 * `memberNamesOfStatuses` - array of the member names for each status posted in the member's feed, with corresponding indexes between them
 
-> The member class inherits from the fan page class.
+> The `Member` class inherits from the `fanPage` class.
 <br />
 
 ### 2.2) Add a New Fan Page
@@ -35,11 +36,31 @@ Each fan page consists of:
 <br />   
 
 ### 2.3) Add a Status to a Member / Fan Page
-bla bla bla.  
+Creates a new status and adds it to a member or to a fan page's `statusArray`.   
+Checks for input errors, and lets the user choose if the status will be a   
+`Status (text)` / `ImageStatus` / `VideoStatus`.   
+
+Each status has:
+* `content` - a description of the status image/video or some text
+* `timeOfUpload` - a string representing when the status was uploaded.
+
+> The `ImageStatus` and `VideoStatus` classes inherits from the `Status` class.
 <br />
 
 ### 2.4) Show All Statuses of a Member / Fan Page
-bla bla bla.  
+Prints to the screen all the statuses in the `statusArray` of a member / fan page.   
+The format will be:
+```
+   On {time of upload} {content}
+   {the type of the status - Status/ImageStatus/VideoStatus}
+```  
+<br />
+
+For example for a `ImageStatus` uploaded by user1:
+```
+1 - On n May 21 17:25:54 2012
+hello im user1
+```
 <br />  
  
 ### 2.5) Show 10 of the Most Recent Statuses of a Member / Fan Page
