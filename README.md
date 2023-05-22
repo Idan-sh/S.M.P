@@ -58,8 +58,8 @@ The format will be:
 
 For example for a `ImageStatus` uploaded by user1:
 ```
-1 - On May 21 17:25:54 2012
-hello im user1
+   On May 21 17:25:54 2012
+   hello im user1
 ```
 <br />  
  
