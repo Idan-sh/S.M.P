@@ -2,7 +2,7 @@
 
 int main()
 {
-	SMP PS;
-	PS.launch();
+	SMP smp;
+	smp.launch();
 	return 0;
 }
