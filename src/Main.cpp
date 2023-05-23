@@ -2,7 +2,7 @@
 
 int main()
 {
-	Facebook PS;
+	SMP PS;
 	PS.launch();
 	return 0;
 }

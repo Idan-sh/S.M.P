@@ -27,7 +27,7 @@ enum status_token{ TEXT = 1, IMAGE, VIDEO };
 #define ADD_STATUS_FAN_PAGE 'd'
 // -------------------------
 
-class Facebook
+class SMP
 {
 	vector<Member*> members;
 	vector<FanPage*> fanPages;
@@ -44,13 +44,13 @@ private:
     void exitFacebook() const;
 
 public:
-	Facebook();
-    ~Facebook();
+	SMP();
+    ~SMP();
 
-    Facebook(const Facebook& other) { *this = other; };                 // cpy c'tor.
-    Facebook(Facebook&& other) noexcept { *this = std::move(other); }; // move c'tor.
-    Facebook& operator=(const Facebook& other) noexcept;                // cpy operator.
-    Facebook& operator=(Facebook&& other) noexcept;                     // move operator.
+    SMP(const SMP& other) { *this = other; };                 // cpy c'tor.
+    SMP(SMP&& other) noexcept { *this = std::move(other); }; // move c'tor.
+    SMP& operator=(const SMP& other) noexcept;                // cpy operator.
+    SMP& operator=(SMP&& other) noexcept;                     // move operator.
 
 	void launch();
     void InitDB();

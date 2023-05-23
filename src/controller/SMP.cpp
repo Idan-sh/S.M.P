@@ -3,7 +3,7 @@
 /*
  * Reserve space for new members and fan pages to be added.
  */
-Facebook::Facebook()
+SMP::SMP()
 {
 	members.reserve(DB_INIT_SIZE);
 	fanPages.reserve(DB_INIT_SIZE);
@@ -17,7 +17,7 @@ Facebook::Facebook()
 /*
  * Free allocated memory of the members and fan pages arrays.
  */
-Facebook::~Facebook()
+SMP::~SMP()
 {
     for(auto curr : members)
         delete curr;
@@ -27,7 +27,7 @@ Facebook::~Facebook()
 }
 
 
-Facebook& Facebook::operator=(const Facebook& other) noexcept
+SMP& SMP::operator=(const SMP& other) noexcept
 {
     // Erase the existing members and fan pages.
     members.clear();
@@ -49,7 +49,7 @@ Facebook& Facebook::operator=(const Facebook& other) noexcept
 }
 
 
-Facebook& Facebook::operator=(Facebook&& other) noexcept
+SMP& SMP::operator=(SMP&& other) noexcept
 {
     // Erase the existing members and fan pages.
     members.clear();
@@ -75,7 +75,7 @@ Facebook& Facebook::operator=(Facebook&& other) noexcept
 /*
  * Start the program.
  */
-void Facebook::launch()
+void SMP::launch()
 {
 	cout << "Welcome to Facebook!" << endl;
     getDB(); // Get the database from txt file.
@@ -130,7 +130,7 @@ void Facebook::launch()
 /*
  * Calls for the right function in the program.
  */
-void Facebook::doAction(int token)
+void SMP::doAction(int token)
 {
 	switch (token) {
 	case NEW_MEMBER:
@@ -179,7 +179,7 @@ void Facebook::doAction(int token)
 /*
 * Adds a new member to the facebook database.
 */
-void Facebook::addMember()
+void SMP::addMember()
 {
 	Date dob;
 	string name;
@@ -204,7 +204,7 @@ void Facebook::addMember()
 /*
 	Adds a new fan page to the facebook database.
 */
-void Facebook::addFanPage()
+void SMP::addFanPage()
 {
 	string name;
 
@@ -220,7 +220,7 @@ void Facebook::addFanPage()
  Checks if a name is already in use.
  Token 1 to search for a member, Token 2 to search for a fan page.
 */
-void Facebook::checkName(const string& name, int token) const
+void SMP::checkName(const string& name, int token) const
 {
 	if (token == MEMBER) // Search for member.
 	{
@@ -239,7 +239,7 @@ void Facebook::checkName(const string& name, int token) const
 /*
 	Adds a new status to a member / fan page of choice.
 */
-void Facebook::addStatus()
+void SMP::addStatus()
 {
 	int token = EMPTY;
 	string name;
@@ -287,7 +287,7 @@ void Facebook::addStatus()
 /*
 	Print all statuses of a member / fan page of choice.
 */
-void Facebook::printAllStatuses() const
+void SMP::printAllStatuses() const
 {
 	int token = NONE;
 	string name;
@@ -332,7 +332,7 @@ void Facebook::printAllStatuses() const
 /*
 	Prints feed of a member of choice.
 */
-void Facebook::printMemberFeed() const
+void SMP::printMemberFeed() const
 {
 	string name;
 	cout << "Enter name of the member: " << flush;
@@ -354,7 +354,7 @@ void Facebook::printMemberFeed() const
 /*
 	Checks for valid input (names of Members exist in database) if so adds friendship between said members.
 */
-void Facebook::addFriendship()
+void SMP::addFriendship()
 {
 	string name1;
 	string name2;
@@ -387,7 +387,7 @@ void Facebook::addFriendship()
 /*
 	Checks for valid input (names of Members exist in database) if so removes the friendship of said members.
 */
-void Facebook::removeFriendship()
+void SMP::removeFriendship()
 {
 	string name1;
 	string name2;
@@ -422,7 +422,7 @@ void Facebook::removeFriendship()
 /*
 	Checks it input is valid (names of Fan Page and Member exist in database) if so adds the Member to the Fan Page.
 */
-void Facebook::addFanToPage()
+void SMP::addFanToPage()
 {	
 	string nameFP;
 	string nameM;
@@ -467,7 +467,7 @@ void Facebook::addFanToPage()
 /*
 	Checks if input is valid (names of Fan Page and Member) if so removes the Member from the Fan Page. 
 */
-void Facebook::removeFanFromPage()
+void SMP::removeFanFromPage()
 {
 	string nameFP;
 	string nameM;
@@ -513,7 +513,7 @@ void Facebook::removeFanFromPage()
 /*
 	Prints all Members and Fan Pages that exist at the momnet.
 */
-void Facebook::printDatabase() const
+void SMP::printDatabase() const
 {
 	int counter = 0;
 	cout << "Members:\n" << endl;
@@ -536,7 +536,7 @@ void Facebook::printDatabase() const
 /*
 	Checks if input is valid (Member/Fan Page exists) if so, print all friends/fans of member/fan page.
 */
-void Facebook::printFriendsOrFans() const
+void SMP::printFriendsOrFans() const
 {
 	int token = NONE;
 	string name;
@@ -583,7 +583,7 @@ void Facebook::printFriendsOrFans() const
  * Write all the data to the database file.
  * Free memory of allocated memory for variables and objects.
  */
-void Facebook::exitFacebook() const
+void SMP::exitFacebook() const
 {
     ofstream outFile(DATABASE_FILE_NAME, ios::trunc);
 
@@ -623,7 +623,7 @@ void Facebook::exitFacebook() const
 /*
  * Find the index of a member in the members array.
  */
-int Facebook::findIndMembers(const Member& member) const
+int SMP::findIndMembers(const Member& member) const
 {
     for(int i = 0; i < members.size(); i++)
         if(members[i] == &member)
@@ -634,7 +634,7 @@ int Facebook::findIndMembers(const Member& member) const
 /*
  * Find the index of a fan page in the fan pages array.
  */
-int Facebook::findIndFanPages(const FanPage& fp) const
+int SMP::findIndFanPages(const FanPage& fp) const
 {
     for(int i = 0; i < fanPages.size(); i++)
         if(fanPages[i] == &fp)
@@ -645,7 +645,7 @@ int Facebook::findIndFanPages(const FanPage& fp) const
 /*
  * Get a status from a file, allocate memory for it and return a pointer to it.
  */
-Status* Facebook::getStatus(ifstream& file)
+Status* SMP::getStatus(ifstream& file)
 {
     char command;
     string line1, line2;
@@ -684,7 +684,7 @@ Status* Facebook::getStatus(ifstream& file)
 	Gets and writes a status to curr.
 */
 template <class T>
-void Facebook::enterStatus(T& curr)
+void SMP::enterStatus(T& curr)
 {
     int type;
     string content;
@@ -729,7 +729,7 @@ void Facebook::enterStatus(T& curr)
  * Gets the database from a text file saved under DATABASE_FILE_NAME name.
  * The file must be in the same directory of the program.
  */
-void Facebook::getDB()
+void SMP::getDB()
 {
     ifstream inputFile(DATABASE_FILE_NAME);
     if (!inputFile) // if the database file doesn't exist (probably on the first run) - create a hardcoded database.
@@ -805,7 +805,7 @@ void Facebook::getDB()
 /*
  * Write status to out file, also writes if it's a status of member/fan page and the index in the members/fan pages array.
  */
-void Facebook::outStatus(Status* st, ofstream& outFile, int ind, char token) const
+void SMP::outStatus(Status* st, ofstream& outFile, int ind, char token) const
 {
     auto* tmp1 = dynamic_cast<ImageStatus*>(st); // Check if status received is an Image Status.
     auto* tmp2 = dynamic_cast<VideoStatus*>(st); // Check if status received is a Video Status.
@@ -823,7 +823,7 @@ void Facebook::outStatus(Status* st, ofstream& outFile, int ind, char token) con
 /*
  * 	Hard coded database including members, fan pages, statuses and friendships, use for testing.
 */
-void Facebook::InitDB()
+void SMP::InitDB()
 {
     Date d;
     d.day = d.month = 1;
