@@ -5,8 +5,8 @@ Status::Status(const string& c) : content(c)
 	// current date and time on the current system
 	time_t now = time(nullptr);
 	// convert now to string form
-	string date_time = ctime(&now);
-	timeOfUpload = date_time;
+	string dateTime = ctime(&now);
+	timeOfUpload = dateTime;
 
     ref_counter = new int(1);
 }

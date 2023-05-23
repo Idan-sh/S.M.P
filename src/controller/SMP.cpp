@@ -199,7 +199,6 @@ void Facebook::addMember()
 	cin >> dob.day;
 
 	members.push_back(new Member(name, dob));
-	cout << "Action Completed Successfully!" << endl;
 }
 
 /*
@@ -215,7 +214,6 @@ void Facebook::addFanPage()
 	checkName(name, FAN_PAGE);
 
 	fanPages.push_back(new FanPage(name));
-	cout << "Action Completed Successfully!" << endl;
 }
 
 /*
@@ -260,7 +258,6 @@ void Facebook::addStatus()
 			if (curr->getName() == name)
 			{
 				enterStatus(curr);
-				cout << "Action Completed Successfully!" << endl;
 				return;
 			}
 		}
@@ -278,7 +275,6 @@ void Facebook::addStatus()
 			if (curr->getName() == name)
 			{
                 enterStatus(curr);
-				cout << "Action Completed Successfully!" << endl;
 				return;
 			}
 		}
@@ -308,7 +304,6 @@ void Facebook::printAllStatuses() const
 			if (curr->getName() == name)
 			{
 				curr->printStatuses();
-				cout << "Action Completed Successfully!" << endl;
 				return;
 			}
 		}
@@ -325,7 +320,6 @@ void Facebook::printAllStatuses() const
 			if (curr->getName() == name)
 			{
 				curr->printStatuses();
-				cout << "Action Completed Successfully!" << endl;
 				return;
 			}
 		}
@@ -350,7 +344,6 @@ void Facebook::printMemberFeed() const
 		if (curr->getName() == name)
 		{
 			curr->printFeed();
-			cout << "Action Completed Successfully!" << endl;
 			return;
 		}
 	}
@@ -388,7 +381,6 @@ void Facebook::addFriendship()
 		throw MemberException(MEMBER_NOT_FOUND);
 
 	*ptr1 += *ptr2;
-	cout << "Action Completed Successfully!" << endl;
 }
 
 
@@ -424,7 +416,6 @@ void Facebook::removeFriendship()
 
 	ptr1->removeMember(ptr2);
 	ptr2->removeMember(ptr1);
-	cout << "Action Completed Successfully!" << endl;
 }
 
 
@@ -470,7 +461,6 @@ void Facebook::addFanToPage()
 		throw MemberException(MEMBER_NOT_FOUND);
 
 	*ptrM += *ptrFP;
-	cout << "Action Completed Successfully!" << endl;
 }
 
 
@@ -517,7 +507,6 @@ void Facebook::removeFanFromPage()
 		throw MemberException(MEMBER_NOT_FOUND);
 
 	ptrM->LeaveFanPage(ptrFP);
-	cout << "Action Completed Successfully!" << endl;
 }
 
 
@@ -541,7 +530,6 @@ void Facebook::printDatabase() const
 		cout << counter + 1 << " - " << curr->getName() << endl;
 		counter++;
 	}
-	cout << "Action Completed Successfully!" << endl;
 }
 
 
@@ -566,7 +554,6 @@ void Facebook::printFriendsOrFans() const
 			if (curr->getName() == name)
 			{
 				curr->printMembers();
-				cout << "Action Completed Successfully!" << endl;
 				return;
 			}
 		}
@@ -582,7 +569,6 @@ void Facebook::printFriendsOrFans() const
 			if (curr->getName() == name)
 			{
 				curr->printMembers();
-				cout << "Action Completed Successfully!" << endl;
 				return;
 			}
 		}
@@ -670,22 +656,23 @@ Status* Facebook::getStatus(ifstream& file)
     {
         case ADD_TEXT_STATUS:
         {
-            file >> command;
             getline(file, line1);
+            line1.erase(0, 1);  // Erase the first char of the string received which is a blank space.
             getline(file, line2);
+            return new Status(line2, line1 += "\n");
             return new Status(line2, line1 += "\n");
         }
         case ADD_IMAGE_STATUS:
         {
-            file >> command;
             getline(file, line1);
+            line1.erase(0, 1);  // Erase the first char of the string received which is a blank space.
             getline(file, line2);
             return new ImageStatus(line2, line1 += "\n");
         }
         case ADD_VIDEO_STATUS:
         {
-            file >> command;
             getline(file, line1);
+            line1.erase(0, 1);  // Erase the first char of the string received which is a blank space.
             getline(file, line2);
             return new VideoStatus(line2, line1 += "\n");
         }
@@ -747,12 +734,12 @@ void Facebook::getDB()
     ifstream inputFile(DATABASE_FILE_NAME);
     if (!inputFile) // if the database file doesn't exist (probably on the first run) - create a hardcoded database.
     {
-        InitDB();// Adds requested hardcoded members and fanpages and the links needed.
+        InitDB();// Adds requested hardcoded members and fan pages and the links needed.
         return;
     }
 
     char command;
-    string curr, name;
+    string name;
     int ind1,ind2;
     Date dob;
 
@@ -761,7 +748,7 @@ void Facebook::getDB()
         try
         {
             inputFile >> command;
-            switch (command) // Command represents the type of function to use.
+            switch (command) // Command character represents the type of function to use.
             {
                 case ADD_MEMBER:
                 {
@@ -804,6 +791,8 @@ void Facebook::getDB()
                     fanPages[ind1]->writeStatus(getStatus(inputFile));
                     break;
                 }
+                default:
+                    throw FacebookException(INVALID_TOKEN);
             }
         }
         catch(const MemberException& exception) // We don't need to handle it because we have duplicate friendships.
@@ -819,7 +808,7 @@ void Facebook::getDB()
 void Facebook::outStatus(Status* st, ofstream& outFile, int ind, char token) const
 {
     auto* tmp1 = dynamic_cast<ImageStatus*>(st); // Check if status received is an Image Status.
-    auto* tmp2 = dynamic_cast<VideoStatus*>(st); // Check if status received is an Video Status.
+    auto* tmp2 = dynamic_cast<VideoStatus*>(st); // Check if status received is a Video Status.
 
     // Write to the out file the correct status format.
     if(tmp1 != nullptr)
@@ -832,7 +821,7 @@ void Facebook::outStatus(Status* st, ofstream& outFile, int ind, char token) con
 
 
 /*
-	Hard coded database including members, fan pages, statuses and friendships, use for testing.
+ * 	Hard coded database including members, fan pages, statuses and friendships, use for testing.
 */
 void Facebook::InitDB()
 {
