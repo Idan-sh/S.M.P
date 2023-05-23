@@ -2,14 +2,24 @@
 a Social-Media-Platform made in C++ language.
 
 ## 1) About
-SMP app allows members to socialize and comunicate with their friends.   
+SMP app allows members to socialize and communicate with their friends.   
 Each member is defined by a unique name, and his date of birth.   
    
 The member will be promped with a menu of options, and will choose the desired option to use by entering its option number. 
    
 The database of `members` / `fan pages` will be read from a database file each time the app will run. All of the changes will be saved into this file after the exit option is chosen.    
    
-> In case the database file does not exist (as when running the program the first time), it will be created with a set of pre-made members and fan pages made for testing.
+> In case the database file does not exist (as when running the program the first time), it will be created with a set of pre-made members and fan pages made for testing.   
+<br />
+
+The program checks for `input errors`, and handles `exceptions` depending on their context.   
+<br />
+
+#### There is a high emphasis on:
+1. OOP principles: `abstraction`, `encapsulation`, `polymorphism`, `inheritance`
+2. `overloading` methods and operators
+3. `constructor` implementation
+4. `exception` handling
 <br />
 
 ## 2) User Options
