@@ -79,7 +79,7 @@ For example for a `ImageStatus` uploaded by user1:
 ```
    On May 21 17:25:54 2012
    hello im user1
-   This status is in black and white.
+   This Image is in color
 ```
 <br />  
  
