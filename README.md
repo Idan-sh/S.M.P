@@ -96,29 +96,29 @@ Searches the members in the `members` array of `SMP`, adds each one to the other
 
 ### 2.7) Disconnect Two Members - Remove a Friendship
 **Remove** a **friendship** that exists between two **members**.
-Searches for the members in the `members` array of `SMP`
+Searches for the members in the `members` array of `SMP`.   
 * If both found - tries to remove each member from the other's `memberArray`
 * If they are not friend - an exception will be thrown
 <br />  
 
 ### 2.8) Add a Member as a Fan of a Fan Page
 Add an existing member as a fan to an existing fan page.
-Searches for the member in the `members` array of `SMP`
-Seaches for the fan page in the `fanPages` array of `SMP`
+Searches for the member in the `members` array of `SMP`.   
+Seaches for the fan page in the `fanPages` array of `SMP`.   
 * If both found - tries to add the member to the fan page's `memberArray`, and tries to add the fan page to the member's `fpArray`
 * If at least one was not found - an exception will be thrown
 <br />  
 
 ### 2.9) Remove a Member (a Fan) of a Fan Page
 Remove a fan to an existing fan page.
-Searches for the member in the `members` array of `SMP`
-Seaches for the fan page in the `fanPages` array of `SMP`
+Searches for the member in the `members` array of `SMP`.   
+Seaches for the fan page in the `fanPages` array of `SMP`.   
 * If both found - tries to remove the member to the fan page's `memberArray`, and tries to remove the fan page to the member's `fpArray`
 * If at least one was not found - an exception will be thrown
 <br />  
 
 ### 2.10) Show All Members and Fan Pages in the system
-Print all existing members in the `members` array of `SMP`,   
+Print all existing members in the `members` array of `SMP`,    
 Print all existing fan pages in the `fanPages` array of `SMP`.   
 <br />  
 
