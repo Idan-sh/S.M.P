@@ -12,7 +12,7 @@ The database of `members` / `fan pages` will be read from a database file each t
 > In case the database file does not exist (as when running the program the first time), it will be created with a set of pre-made members and fan pages made for testing.
 <br />
 
-## 2) Member Options
+## 2) User Options
 ### 2.1) Add a New Member
 Creates a new member and adds him to the database.   
 Checks for validity of the date of birth.   
